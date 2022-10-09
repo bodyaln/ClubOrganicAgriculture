@@ -71,17 +71,18 @@ function MediaFunction(media) {
   MediaFunction(media576);
   media576.addEventListener("change", MediaFunction);
 
-  let media992 =  window.matchMedia('(min-width: 992px)')
-   let media1200 = window.matchMedia("(max-width: 1200px)");
-  console.log(media992);
-   console.log(media1200);
+//   let media992 =  window.matchMedia('(min-width: 992px)')
+//    let media1200 = window.matchMedia("(max-width: 1200px)");
 
-  MediaFunctionPromo(media992, media1200);
-//   media992.addEventListener("change",  MediaFunctionPromo(media992, media1200));
-//   media1200.addEventListener("change",  MediaFunctionPromo(media992, media1200));
+  let mediaPromo =  window.matchMedia('(min-width: 992px) and (max-width: 1200px)');
 
-  function  MediaFunctionPromo(media992, media1200){
-    if (media992.matches && media1200.matches) { 
+
+  MediaFunctionPromo(mediaPromo);
+  mediaPromo.addEventListener("change", MediaFunctionPromo);
+
+  function  MediaFunctionPromo(mediaPromo){
+    console.log("FUNCTIon")
+    if (mediaPromo.matches) { 
         console.log("event");
         document.querySelector('.promo__navigation img').style.cssText = "width: 400px; height: 375px";
         let area = document.querySelectorAll('area');
@@ -90,6 +91,15 @@ function MediaFunction(media) {
         area[2].coords = "28,124,25";
         area[3].coords = "360,110,25";
         area[4].coords = "65,23, 110,75"
+    }
+    else{
+        document.querySelector('.promo__navigation img').style.cssText = "";
+        let area = document.querySelectorAll('area');
+        area[0].coords = "240,37,40";
+        area[1].coords = "385,40,40";
+        area[2].coords = "38,160,30";
+        area[3].coords = "450,135,30";
+        area[4].coords = "56,20, 140,102"
     }
   }
 
