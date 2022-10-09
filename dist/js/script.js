@@ -66,10 +66,33 @@ function MediaFunction(media) {
     }
   }
   
-  var media = window.matchMedia("(max-width: 576px)");
-  console.log(media);
-  MediaFunction(media);
-  media.addEventListener("change", MediaFunction,);
+  let media576 = window.matchMedia("(max-width: 576px)");
+  console.log(media576);
+  MediaFunction(media576);
+  media576.addEventListener("change", MediaFunction);
+
+  let media992 =  window.matchMedia('(min-width: 992px)')
+   let media1200 = window.matchMedia("(max-width: 1200px)");
+  console.log(media992);
+   console.log(media1200);
+
+  MediaFunctionPromo(media992, media1200);
+//   media992.addEventListener("change",  MediaFunctionPromo(media992, media1200));
+//   media1200.addEventListener("change",  MediaFunctionPromo(media992, media1200));
+
+  function  MediaFunctionPromo(media992, media1200){
+    if (media992.matches && media1200.matches) { 
+        console.log("event");
+        document.querySelector('.promo__navigation img').style.cssText = "width: 400px; height: 375px";
+        let area = document.querySelectorAll('area');
+        area[0].coords = "190,30,30";
+        area[1].coords = "310,34,30";
+        area[2].coords = "28,124,25";
+        area[3].coords = "360,110,25";
+        area[4].coords = "65,23, 110,75"
+    }
+  }
+
 
 
 
